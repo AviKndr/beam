@@ -2391,7 +2391,10 @@ class BeamModulePlugin implements Plugin<Project> {
         def grEclipseConfig = project.project(":").file("buildSrc/greclipse.properties")
         groovy {
           greclipse().configFile(grEclipseConfig)
-          target project.fileTree(project.projectDir) { include '**/*.groovy' }
+          target project.fileTree(project.projectDir) {
+            include '**/*.groovy'
+            exclude '**/build/**'
+          }
         }
         groovyGradle { greclipse().configFile(grEclipseConfig) }
       }
