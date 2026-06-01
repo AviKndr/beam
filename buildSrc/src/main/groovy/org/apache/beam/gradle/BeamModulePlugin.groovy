@@ -1471,6 +1471,8 @@ class BeamModulePlugin implements Plugin<Project> {
           googleJavaFormat('1.17.0')
           target project.fileTree(project.projectDir) {
             include 'src/*/java/**/*.java'
+            exclude '**/build/**'
+            exclude '**/.gradle/**'
             exclude '**/DefaultPackageTest.java'
           }
           // For spotless:off and spotless:on
@@ -2396,6 +2398,7 @@ class BeamModulePlugin implements Plugin<Project> {
           target project.fileTree(project.projectDir) {
             include '**/*.groovy'
             exclude '**/build/**'
+            exclude '**/.gradle/**'
           }
         }
         groovyGradle { greclipse().configFile(grEclipseConfig) }
