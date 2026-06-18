@@ -102,7 +102,8 @@ class WindowingWindmillReader<K, T> extends NativeReader<WindowedValue<KeyedWork
       @SuppressWarnings("unchecked")
       Coder<WindowedValue<KeyedWorkItem<Object, Object>>> typedCoder =
           (Coder<WindowedValue<KeyedWorkItem<Object, Object>>>) checkArgumentNotNull(coder);
-      @Nullable ValueProvider<Boolean> skipUndecodableElements =
+      @Nullable
+      ValueProvider<Boolean> skipUndecodableElements =
           (options != null)
               ? options
                   .as(DataflowStreamingPipelineOptions.class)

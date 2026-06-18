@@ -128,7 +128,6 @@ public class StreamingModeExecutionContext extends DataflowExecutionContext<Step
   private final Map<TupleTag<?>, Map<BoundedWindow, SideInput<?>>> sideInputCache;
 
   private final WindmillTagEncoding windmillTagEncoding;
-
   /**
    * The current user-facing key for this execution context.
    *
@@ -557,7 +556,8 @@ public class StreamingModeExecutionContext extends DataflowExecutionContext<Step
     return callbacks;
   }
 
-  @Nullable String getStateFamily(NameContext nameContext) {
+  @Nullable
+  String getStateFamily(NameContext nameContext) {
     return nameContext.userName() == null ? null : stateNameMap.get(nameContext.userName());
   }
 
@@ -955,7 +955,8 @@ public class StreamingModeExecutionContext extends DataflowExecutionContext<Step
     }
 
     private boolean isTimerUnmodified(TimerData timerData) {
-      @Nullable TimerData updatedTimer =
+      @Nullable
+      TimerData updatedTimer =
           modifiedUserTimerKeys.get(
               WindmillTimerInternals.getTimerDataKey(timerData), timerData.getNamespace());
       return updatedTimer == null || updatedTimer.equals(timerData);
